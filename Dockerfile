@@ -15,11 +15,11 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     unzip ${file}                                                           && \
     rm ${file}                                                              && \
     mv dependency-check /usr/share/                                         && \
+    apt-get install git                                                     && \
     su -                                                                    && \
     apt-get install sudo -y                                                 && \
     useradd -ms /bin/bash ${user}                                           && \
     usermod -aG sudo ${user}                                           	    && \
-    apt-get install git                                                     && \
     chown -R ${user}:${user} /usr/share/dependency-check                    && \
     mkdir /report                                                           && \
     chown -R ${user}:${user} /report                                        && \
