@@ -15,7 +15,6 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     unzip ${file}                                                           && \
     rm ${file}                                                              && \
     mv dependency-check /usr/share/                                         && \
-    apt-get install git                                                     && \
     su -                                                                    && \
     apt-get install sudo -y                                                 && \
     useradd -ms /bin/bash ${user}                                           && \
@@ -25,6 +24,7 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     chown -R ${user}:${user} /report                                        && \
     apt-get remove --purge -y wget                                          && \
     apt-get autoremove -y                                                   && \
+    apt-get install git -y                                                     && \
     rm -rf /var/lib/apt/lists/* /tmp/*
  
 USER ${user}
