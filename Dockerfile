@@ -15,6 +15,8 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     unzip ${file}                                                           && \
     rm ${file}                                                              && \
     mv dependency-check /usr/share/                                         && \
+    su -                                                                    && \
+    apt-get install sudo -y                                                 && \
     useradd -ms /bin/bash ${user}                                           && \
 	usermod -aG sudo ${user}                                           		&& \
     chown -R ${user}:${user} /usr/share/dependency-check                    && \
