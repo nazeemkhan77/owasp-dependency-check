@@ -18,7 +18,7 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     su -                                                                    && \
     apt-get install sudo -y                                                 && \
     useradd -ms /bin/bash ${user}                                           && \
-	usermod -aG sudo ${user}                                           		&& \
+    usermod -aG sudo ${user}                                           	    && \
     chown -R ${user}:${user} /usr/share/dependency-check                    && \
     mkdir /report                                                           && \
     chown -R ${user}:${user} /report                                        && \
