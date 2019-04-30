@@ -18,6 +18,8 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     mkdir /report                                                           && \
     apt-get remove --purge -y wget                                          && \
     apt-get autoremove -y                                                   && \
+    apt-get install npm -y                                                  && \
+    apt-get install nodejs -y                                               && \
     apt-get install git -y                                                  && \
     rm -rf /var/lib/apt/lists/* /tmp/*
  
