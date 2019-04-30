@@ -21,8 +21,6 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     apt-get install git -y                                                  && \
     rm -rf /var/lib/apt/lists/* /tmp/*
  
-USER ${user}
-
 VOLUME ["/src" "/usr/share/dependency-check/data" "/report"]
 
 WORKDIR /src
