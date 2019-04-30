@@ -17,9 +17,10 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     mv dependency-check /usr/share/                                         && \
     mkdir /report                                                           && \
     apt-get remove --purge -y wget                                          && \
+    apt-get install curl -y                                                 && \
     apt-get autoremove -y                                                   && \
-    apt-get install npm -y                                                  && \
-    apt-get install nodejs -y                                               && \
+    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -          && \
+    apt-get install build-essential nodejs -y                               && \
     apt-get install git -y                                                  && \
     rm -rf /var/lib/apt/lists/* /tmp/*
  
