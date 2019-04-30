@@ -16,6 +16,7 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     rm ${file}                                                              && \
     mv dependency-check /usr/share/                                         && \
     mkdir /report                                                           && \
+    apt-get install sudo -y                                                 && \    
     apt-get remove --purge -y wget                                          && \
     apt-get install curl -y                                                 && \
     apt-get autoremove -y                                                   && \
