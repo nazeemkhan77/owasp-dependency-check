@@ -17,8 +17,7 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     mv dependency-check /usr/share/                                         && \
     su -                                                                    && \
     apt-get install sudo -y                                                 && \
-    useradd -ms /bin/bash ${user}                                           && \
-    echo '${user}:${user}' | chpasswd                                       && \
+    adduser --disabled-password --gecos "" ${user}                          && \
     usermod -aG sudo ${user}                                           	    && \
     chown -R ${user}:${user} /usr/share/dependency-check                    && \
     mkdir /report                                                           && \
