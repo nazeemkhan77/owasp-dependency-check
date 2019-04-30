@@ -15,16 +15,10 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     unzip ${file}                                                           && \
     rm ${file}                                                              && \
     mv dependency-check /usr/share/                                         && \
-    su -                                                                    && \
-    apt-get install sudo -y                                                 && \
-    adduser --disabled-password --gecos "" ${user}                          && \
-    usermod -aG sudo ${user}                                           	    && \
-    chown -R ${user}:${user} /usr/share/dependency-check                    && \
     mkdir /report                                                           && \
-    chown -R ${user}:${user} /report                                        && \
     apt-get remove --purge -y wget                                          && \
     apt-get autoremove -y                                                   && \
-    apt-get install git -y                                                     && \
+    apt-get install git -y                                                  && \
     rm -rf /var/lib/apt/lists/* /tmp/*
  
 USER ${user}
