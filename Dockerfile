@@ -30,8 +30,8 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     ls -l $JAVA_HOME/lib/security/cacerts                                   && \
     keytool -importcert -file nvd.nist.gov.cer -alias nvd -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit -keypass changeit -noprompt && \
     export MAVEN_OPTS="-Djavax.net.ssl.keyStore=$JAVA_HOME/lib/security/cacert -Djavax.net.ssl.keyStorePassword=changeit -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Ddownloader.quick.query.timestamp=false" && \
-    file="nist-data-mirror-${nist-data-mirror_version}/nist-data-mirror-{nist-data-mirror_version}.jar" && \
-    wget $nist_data-mirror-download-url/$file                               && \
+    file="nist-data-mirror-${nist-data-mirror_version}/nist-data-mirror-${nist-data-mirror_version}.jar" && \
+    wget ${nist_data-mirror-download-url}/${file}                           && \
     mkdir /usr/share/dependency-check/nist_data-mirror                      && \
     java -jar ./nist-data-mirror-1.2.0.jar /usr/share/dependency-check/nist_data-mirror/1.0 json && \ 
     /usr/share/dependency-check/bin/dependency-check.sh --updateonly --cveUrlBase=/usr/share/dependency-check/nist_data-mirror/1.0/nvdcve-1.0-%d.json.gz --cveUrlModified=/usr/share/dependency-check/nist_data-mirror/1.0/nvdcve-1.0-modified.json.gz && \
