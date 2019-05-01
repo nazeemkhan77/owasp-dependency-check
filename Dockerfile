@@ -19,7 +19,6 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     mv dependency-check /usr/share/                                         && \
     mkdir /report                                                           && \
     apt-get install sudo -y                                                 && \    
-    apt-get remove --purge -y wget                                          && \
     apt-get install curl -y                                                 && \
     apt-get autoremove -y                                                   && \
     curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -          && \
@@ -35,7 +34,8 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     wget $nist_data-mirror-download-url/$file                               && \
     mkdir /usr/share/dependency-check/nist_data-mirror                      && \
     java -jar ./nist-data-mirror-1.2.0.jar /usr/share/dependency-check/nist_data-mirror/1.0 json && \ 
-    /usr/share/dependency-check/bin/dependency-check.sh --updateonly --cveUrlBase=/usr/share/dependency-check/nist_data-mirror/1.0/nvdcve-1.0-%d.json.gz --cveUrlModified=/usr/share/dependency-check/nist_data-mirror/1.0/nvdcve-1.0-modified.json.gz
+    /usr/share/dependency-check/bin/dependency-check.sh --updateonly --cveUrlBase=/usr/share/dependency-check/nist_data-mirror/1.0/nvdcve-1.0-%d.json.gz --cveUrlModified=/usr/share/dependency-check/nist_data-mirror/1.0/nvdcve-1.0-modified.json.gz && \
+    apt-get remove --purge -y wget curl sudo                                         
  
 VOLUME ["/src" "/usr/share/dependency-check/data" "/report"]
 
