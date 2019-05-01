@@ -28,8 +28,7 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     echo "$JAVA_HOME"                                                       && \
     ls -l $JAVA_HOME/lib/security/cacerts                                                       && \
     keytool -importcert -file nvd.nist.gov.cer -alias nvd -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit -keypass changeit -noprompt && \
-    export MAVEN_OPTS="-Djavax.net.ssl.keyStore=$JAVA_HOME/lib/security/cacert -Djavax.net.ssl.keyStorePassword=changeit -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Ddownloader.quick.query.timestamp=false" && \
-    mvn dependency-check:check
+    export MAVEN_OPTS="-Djavax.net.ssl.keyStore=$JAVA_HOME/lib/security/cacert -Djavax.net.ssl.keyStorePassword=changeit -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Ddownloader.quick.query.timestamp=false"
  
 VOLUME ["/src" "/usr/share/dependency-check/data" "/report"]
 
