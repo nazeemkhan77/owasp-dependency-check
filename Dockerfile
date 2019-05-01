@@ -25,8 +25,10 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     apt-get install git -y                                                  && \
     rm -rf /var/lib/apt/lists/* /tmp/*                                      && \
     openssl s_client -showcerts -connect nvd.nist.gov:443 </dev/null 2>/dev/null|openssl x509 -outform DER -out nvd.nist.gov.cer && \
-    keytool -importcert -file nvd.nist.gov.cer -alias nvd -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit -keypass changeit -noprompt && \
-    export MAVEN_OPTS="-Djavax.net.ssl.keyStore=$JAVA_HOME/jre/lib/security/cacert -Djavax.net.ssl.keyStorePassword=changeit -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Ddownloader.quick.query.timestamp=false" && \
+    echo "$JAVA_HOME"                                                       && \
+    ls -l $JAVA_HOME/lib/security/cacerts                                                       && \
+    keytool -importcert -file nvd.nist.gov.cer -alias nvd -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit -keypass changeit -noprompt && \
+    export MAVEN_OPTS="-Djavax.net.ssl.keyStore=$JAVA_HOME/lib/security/cacert -Djavax.net.ssl.keyStorePassword=changeit -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Ddownloader.quick.query.timestamp=false" && \
     mvn dependency-check:check
  
 VOLUME ["/src" "/usr/share/dependency-check/data" "/report"]
