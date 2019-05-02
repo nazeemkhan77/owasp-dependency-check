@@ -38,7 +38,7 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     apt-get remove --purge -y curl                                         && \
     apt-get autoremove -y                                                 
  
-VOLUME ["/src" "/usr/share/dependency-check/data" "/report"]
+VOLUME ["/src" "/usr/share/dependency-check/data" "/report" "/usr/share/dependency-check/nist_data-mirror/1.0"]
 
 WORKDIR /src
 
