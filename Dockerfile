@@ -36,7 +36,6 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     java -jar ./nist-data-mirror-1.2.0.jar /usr/share/dependency-check/nist_data-mirror/1.0 json && \ 
     apt-get remove --purge -y wget                                         && \
     apt-get remove --purge -y curl                                         && \
-    apt-get remove --purge -y sudo                                         && \
     apt-get autoremove -y                                                 
  
 VOLUME ["/src" "/usr/share/dependency-check/data" "/report"]
