@@ -35,7 +35,10 @@ RUN file="dependency-check-${version}-release.zip"                          && \
     mkdir /usr/share/dependency-check/nist_data-mirror                      && \
     java -jar ./nist-data-mirror-1.2.0.jar /usr/share/dependency-check/nist_data-mirror/1.0 json && \ 
     /usr/share/dependency-check/bin/dependency-check.sh --updateonly --cveUrlBase=/usr/share/dependency-check/nist_data-mirror/1.0/nvdcve-1.0-%d.json.gz --cveUrlModified=/usr/share/dependency-check/nist_data-mirror/1.0/nvdcve-1.0-modified.json.gz && \
-    apt-get remove --purge -y wget curl sudo                                         
+    apt-get remove --purge -y wget                                         && \
+    apt-get remove --purge -y curl                                         && \
+    apt-get remove --purge -y sudo                                         && \
+    apt-get autoremove -y                                                  
  
 VOLUME ["/src" "/usr/share/dependency-check/data" "/report"]
 
