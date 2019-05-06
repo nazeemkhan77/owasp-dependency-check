@@ -4,7 +4,7 @@ MAINTAINER Timo Pagel <dependencycheckmaintainer@timo-pagel.de>
 
 ENV user=dependencycheck
 ENV download_url=https://dl.bintray.com/jeremy-long/owasp
-ENV version=4.0.2
+ENV version=5.0.0-M2
 ENV nist_data_mirror_version=1.2.0
 ENV nist_data_mirror_download_url=https://github.com/stevespringett/nist-data-mirror/releases/download
 RUN apt-get update                                                          && \
